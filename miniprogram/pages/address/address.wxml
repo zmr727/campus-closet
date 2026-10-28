@@ -1,0 +1,17 @@
+﻿<view class="page">
+  <view class="nav">
+    <view class="nav-back" bindtap="onBack">‹</view>
+    <text class="nav-title">交接地址</text>
+  </view>
+  <view class="desc">用于校内当面取还衣，建议填宿舍楼+房间号</view>
+  <view class="form">
+    <input
+      class="input"
+      placeholder="例如：梅园3号楼 201宿舍"
+      value="{{address}}"
+      maxlength="120"
+      bindinput="onInput"
+    />
+    <view class="btn" bindtap="onSubmit">保存地址</view>
+  </view>
+</view>

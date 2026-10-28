@@ -1,0 +1,27 @@
+﻿<!-- 启动页：仅两个按钮可点击 -->
+
+<!-- 一个容器，容器名叫page -->
+<!-- 图片名叫logo,src引用的路径，这里是绝对路径，从小程序文件所在的根目录开始找，mode控制图片怎么塞进框里，这里缩放方式是保持比例 -->
+<view class="page">
+  <view class="logo-wrap">
+    <image class="logo" src="{{logo}}" mode="aspectFit"></image>
+  </view>
+
+
+  <view class="title">
+    <text class="title-dark">穿搭</text>
+    <text class="title-pink">自由式</text>
+    <text class="title-dark">，校园随心试</text>
+  </view>
+  <view class="subtitle">多元服饰 · 按需租借 · 便捷取用</view>
+
+  <image class="hero" src="{{hero}}" mode="aspectFit"></image>
+
+<!-- 两个class分别对应平时的样式，（视觉上）按下去临时换成的样式，（逻辑上）手指点完去跑的内容 -->
+  <view class="actions">
+    <view class="btn-primary" hover-class="btn-hover" bindtap="onStart">开启校园衣橱</view>
+    <view class="btn-secondary" hover-class="btn-hover" bindtap="onBrowse">先逛逛</view>
+  </view>
+
+  <view class="footer">适配拍摄留念，定格校园美好瞬间</view>
+</view>

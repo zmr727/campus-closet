@@ -1,0 +1,62 @@
+﻿<!-- 上架租赁信息 -->
+<view class="page">
+  <view class="nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <text class="nav-title">{{navTitle}}</text>
+  </view>
+
+  <scroll-view class="body" scroll-y show-scrollbar="{{false}}">
+    <view class="block" bindtap="onChooseCover">
+      <image wx:if="{{coverLocal}}" class="cover" src="{{coverLocal}}" mode="aspectFill"></image>
+      <view wx:else class="cover-empty">
+        <text class="plus">＋</text>
+        <text class="plus-tip">上传衣物照片</text>
+      </view>
+    </view>
+
+    <view class="form">
+      <view class="field">
+        <text class="label">名称</text>
+        <input class="input" placeholder="例如：蓝色系汉服" value="{{title}}" bindinput="onTitle" />
+      </view>
+      <view class="field" bindtap="onPickCategory">
+        <text class="label">所属类型</text>
+        <text class="value">{{category || '请选择分类'}}</text>
+      </view>
+      <view class="field">
+        <text class="label">尺码</text>
+        <input class="input" placeholder="例如：S/M/L" value="{{size_info}}" bindinput="onSize" />
+      </view>
+      <view class="field">
+        <text class="label">租金（元/天）</text>
+        <input class="input" type="digit" placeholder="例如：30" value="{{price}}" bindinput="onPrice" />
+      </view>
+      <view class="field">
+        <text class="label">可租开始</text>
+        <picker mode="date" value="{{available_from}}" bindchange="onFrom">
+          <text class="value">{{available_from}}</text>
+        </picker>
+      </view>
+      <view class="field">
+        <text class="label">可租结束</text>
+        <picker mode="date" value="{{available_to}}" start="{{available_from}}" bindchange="onTo">
+          <text class="value">{{available_to}}</text>
+        </picker>
+      </view>
+      <view class="field col">
+        <text class="label">简介</text>
+        <textarea class="textarea" placeholder="简单介绍一下衣物状态、适合场景等" value="{{intro}}" bindinput="onIntro" maxlength="200"></textarea>
+      </view>
+    </view>
+
+    <view class="actions" wx:if="{{isEdit}}">
+      <view class="btn ghost" bindtap="onBack">取消</view>
+      <view class="btn primary" bindtap="onSubmit">保存修改</view>
+    </view>
+    <view class="actions" wx:else>
+      <view class="btn ghost" bindtap="onSaveDraft">存草稿</view>
+      <view class="btn primary" bindtap="onSubmit">立即发布</view>
+    </view>
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

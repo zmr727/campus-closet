@@ -1,0 +1,4 @@
+/* virtualHost 模式下，页面 wxss 的 class 会作用到内部 image */
+image {
+  display: block;
+}

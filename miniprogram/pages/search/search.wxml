@@ -1,0 +1,45 @@
+﻿<view class="page">
+  <view class="nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <view class="search-bar">
+      <image class="search-icon" src="{{searchIcon}}" mode="aspectFit"></image>
+      <input
+        class="input"
+        focus
+        confirm-type="search"
+        placeholder="搜索汉服/JK/礼服"
+        value="{{keyword}}"
+        bindinput="onInput"
+        bindconfirm="onSearch"
+      />
+    </view>
+    <text class="search-btn" bindtap="onSearch">搜索</text>
+  </view>
+
+  <scroll-view class="body" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="empty" wx:if="{{searched && !list.length}}">
+      <text>没有找到相关服装</text>
+    </view>
+    <view class="hint" wx:elif="{{!searched}}">
+      <text>输入关键词搜索可租服装</text>
+    </view>
+
+    <view class="list">
+      <view
+        class="row"
+        wx:for="{{list}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onTapItem"
+      >
+        <image class="thumb" src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="info">
+          <text class="title">{{item.title}}</text>
+          <text class="sub">{{item.category}} · {{item.size_info || '尺码见详情'}}</text>
+          <text class="price" wx:if="{{item.price > 0}}">￥{{item.price}}起/天</text>
+        </view>
+      </view>
+    </view>
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

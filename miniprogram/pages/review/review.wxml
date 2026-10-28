@@ -1,0 +1,66 @@
+﻿<!-- 订单评价：双方各自评价对方 -->
+<view class="page">
+  <view class="nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <text class="nav-title">{{roleTip || '评价'}}</text>
+  </view>
+
+  <view class="body" wx:if="{{loaded}}">
+    <view class="goods">
+      <image class="cover" src="{{cover}}" mode="aspectFill"></image>
+      <view class="goods-info">
+        <text class="title">{{title}}</text>
+        <text class="peer">对方：{{peerName}}</text>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{!reviewed}}">
+      <text class="label">整体评分</text>
+      <view class="stars">
+        <view
+          class="star {{score >= item ? 'on' : ''}}"
+          wx:for="{{starList}}"
+          wx:key="*this"
+          data-score="{{item}}"
+          bindtap="onStar"
+        >★</view>
+      </view>
+      <text class="score-tip">{{scoreTip}}</text>
+
+      <text class="label mt">快捷标签（可多选）</text>
+      <view class="tags">
+        <view
+          class="tag {{item.on ? 'on' : ''}}"
+          wx:for="{{tagOptions}}"
+          wx:key="text"
+          data-index="{{index}}"
+          bindtap="onTag"
+        >{{item.text}}</view>
+      </view>
+
+      <text class="label mt">写下评价</text>
+      <textarea
+        class="area"
+        maxlength="200"
+        placeholder="{{side === 'rent' ? '衣物成色、交接体验如何？' : '租客是否爱护衣物、按时归还？'}}"
+        value="{{content}}"
+        bindinput="onContent"
+      />
+      <text class="count">{{content.length}}/200</text>
+
+      <view class="submit {{score > 0 ? '' : 'disabled'}}" bindtap="onSubmit">提交评价</view>
+    </view>
+
+    <view class="card done" wx:else>
+      <text class="done-title">你已评价过</text>
+      <view class="stars readonly">
+        <view class="star {{reviewScore >= item ? 'on' : ''}}" wx:for="{{starList}}" wx:key="*this">★</view>
+      </view>
+      <view class="tags" wx:if="{{reviewTags.length}}">
+        <view class="tag on" wx:for="{{reviewTags}}" wx:key="*this">{{item}}</view>
+      </view>
+      <text class="done-content" wx:if="{{reviewContent}}">{{reviewContent}}</text>
+      <text class="done-content muted" wx:else>未填写文字评价</text>
+    </view>
+  </view>
+</view>

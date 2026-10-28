@@ -1,0 +1,21 @@
+# 依赖与构建
+node_modules/
+package-lock.json
+
+# 微信开发者工具本机私有配置
+miniprogram/project.private.config.json
+
+# 运行期上传文件（保留目录）
+campus_api/uploads/*
+!campus_api/uploads/.gitkeep
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+.codegraph/
+
+# 临时解压
+_unpack_tmp/

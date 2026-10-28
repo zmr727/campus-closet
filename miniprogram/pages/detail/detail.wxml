@@ -1,0 +1,107 @@
+﻿<view class="page">
+  <view class="nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <text class="nav-title">商品详情</text>
+  </view>
+<!-- 详情页内容区开头：可滚动区域 + 商品封面图 -->
+  <scroll-view class="body" scroll-y show-scrollbar="{{false}}">
+    <image class="cover" src="{{item.cover}}" mode="aspectFit"></image>
+    <!-- 这是详情页封面下面的信息面板：价格、标题、标签 -->
+    <view class="panel">
+      <view class="price-row" wx:if="{{item.price > 0}}">
+        <text class="price">￥{{item.price}}</text>
+        <text class="price-unit">起/天</text>
+      </view>
+      <text class="title">{{item.title}}</text>
+      <view class="tags">
+        <text class="tag" wx:if="{{item.category}}">{{item.category}}</text>
+        <text class="tag" wx:if="{{item.date_label}}">上新 {{item.date_label}}</text>
+        <text class="tag">收藏 {{item.fav_count || 0}}</text>
+        <text class="tag">校园可租</text>
+      </view>
+    </view>
+    <!-- 详情页的尺码选择区块 -->
+    <view class="panel" wx:if="{{sizes.length}}">
+      <text class="sec-label">选择尺码</text>
+      <view class="size-row">
+        <view
+          class="size-chip {{selectedSize === item ? 'on' : ''}}"
+          wx:for="{{sizes}}"
+          wx:key="*this"
+          data-size="{{item}}"
+          bindtap="onSelectSize"
+        >{{item}}</view>
+      </view>
+    </view>
+    <!-- 详情页的租用天数和预计总价 -->
+    <view class="panel" wx:if="{{item.price > 0}}">
+      <text class="sec-label">租用天数</text>
+      <view class="days-row">
+        <view class="days-btn" bindtap="onMinusDay">−</view>
+        <text class="days-num">{{days}}天</text>
+        <view class="days-btn" bindtap="onPlusDay">+</view>
+        <text class="days-total">预计 ￥{{totalPrice}}</text>
+      </view>
+    </view>
+    <!-- 详情页的商品说明区块 -->
+    <view class="panel">
+      <text class="sec-label">商品说明</text>
+      <text class="intro">{{item.intro || '暂无更多介绍'}}</text>
+      <text class="tip">· 支持当面验货后租用</text>
+      <text class="tip">· 归还时请保持衣物干净整洁</text>
+      <text class="tip">· 损坏按约定赔偿，细节可联系卖家确认</text>
+    </view>
+    <!-- 详情页的卖家信息条，整行可点 -->
+    <view class="seller" bindtap="onContact">
+      <view class="seller-avatar">卖</view>
+      <view class="seller-info">
+        <text class="seller-name">{{item.seller || '校园衣橱卖家'}}</text>
+        <text class="seller-desc">大学城校区 · 通常当天回复</text>
+      </view>
+      <text class="seller-go">联系 ›</text>
+    </view>
+    <!-- 详情页租客评价区块的头部 -->
+    <view class="panel review-panel">
+      <view class="review-head">
+        <text class="sec-label">租客评价</text>
+        <text class="review-avg" wx:if="{{reviewCount > 0}}">{{avgScore}}分 · {{reviewCount}}条</text>
+        <text class="review-avg" wx:else>暂无评价</text>
+      </view>
+
+      <view class="review-empty" wx:if="{{!reviews.length}}">
+        <text>还没有租客评价，租用归还后可留下真实反馈</text>
+      </view>
+      <!-- 评价列表里每一条评价的结构 -->
+      <view class="review-item" wx:for="{{reviews}}" wx:key="index">
+        <view class="review-user">
+          <image class="review-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="review-meta">
+            <text class="review-name">{{item.nickname}}</text>
+            <text class="review-time">{{item.timeText}}</text>
+          </view>
+          <text class="review-score">{{item.score}}星</text>
+        </view>
+        <view class="review-tags" wx:if="{{item.tags.length}}">
+          <text class="review-tag" wx:for="{{item.tags}}" wx:for-item="tg" wx:key="*this">{{tg}}</text>
+        </view>
+        <text class="review-content" wx:if="{{item.content}}">{{item.content}}</text>
+        <text class="review-content muted" wx:else>该用户未填写文字评价</text>
+      </view>
+    </view>
+
+    <view class="bottom-space"></view>
+  </scroll-view>
+<!-- 包含收藏、联系卖家按钮，根据商品价格区分展示租用或咨询按钮并绑定对应点击事件 -->
+  <view class="bar">
+    <view class="bar-icon" bindtap="onFavorite">
+      <text class="bar-ico">{{favorited ? '♥' : '♡'}}</text>
+      <text class="bar-txt">{{item.fav_count || 0}}</text>
+    </view>
+    <view class="bar-icon" bindtap="onContact">
+      <text class="bar-ico">✉</text>
+      <text class="bar-txt">联系卖家</text>
+    </view>
+    <view class="bar-btn primary" bindtap="onRent" wx:if="{{item.price > 0}}">立即租用</view>
+    <view class="bar-btn primary" bindtap="onContact" wx:else>咨询详情</view>
+  </view>
+</view>

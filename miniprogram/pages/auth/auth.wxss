@@ -1,0 +1,142 @@
+/* 内边距：上 0、左右 48、下 80（内容不贴边） */
+.page {
+  min-height: 100vh;
+  background: #ffffff;
+  box-sizing: border-box;
+  padding: 0 48rpx 80rpx;
+  display: flex;
+  flex-direction: column;
+}
+/* relative位置是相对的 */
+.nav {
+  height: 88rpx;
+  margin-top: 88rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.nav-back {
+  width: 64rpx;
+  height: 64rpx;
+  font-size: 56rpx;
+  color: #333;
+  line-height: 56rpx;
+  text-align: center;
+}
+/* 左右都是贴满导航条宽度 ，不吃点击*/
+.nav-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #222;
+  pointer-events: none;
+}
+/* 主轴居中（默认横排）→ Logo 左右居中 */
+.logo-row {
+  margin-top: 80rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 300rpx;
+  height: 180rpx;
+}
+
+.tip {
+  margin: 28rpx 0 72rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999;
+}
+/* 主轴居中（默认横排）→ Logo 左右居中 */
+.btn-main {
+  width: 650rpx;
+  box-sizing: border-box;
+  height: 92rpx;
+  border-radius: 46rpx;
+  background: rgb(255, 71, 104);
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 500;
+  letter-spacing: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 按压时的样式透明度的变化 */
+.btn-hover {
+  opacity: 0.88;
+}
+
+.agree-row {
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.check {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 12rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ccc;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+/* 内阴影：向内画一圈 5rpx 白边，是勾选框选中时的样式 */
+.check.on {
+  border-color: rgb(255, 71, 104);
+  background: rgb(255, 71, 104);
+  box-shadow: inset 0 0 0 5rpx #fff;
+}
+/* nowrap文字不换行，强制排在一行 */
+.agree-text {
+  font-size: 24rpx;
+  color: #999;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.link {
+  color: rgb(255, 71, 104);
+}
+
+/* 其它登录：弱化、页面底部 */
+.other {
+  margin-top: auto;
+  padding-top: 80rpx;
+  text-align: center;
+}
+
+.other-title {
+  font-size: 22rpx;
+  color: #c0c0c0;
+  margin-bottom: 20rpx;
+}
+
+.other-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.other-link {
+  font-size: 24rpx;
+  color: #b0b0b0;
+  padding: 8rpx 4rpx;
+}
+
+.dot {
+  margin: 0 16rpx;
+  font-size: 22rpx;
+  color: #d0d0d0;
+}

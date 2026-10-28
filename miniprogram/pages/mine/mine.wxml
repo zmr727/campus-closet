@@ -1,0 +1,110 @@
+<!-- 我的 -->
+<view class="page">
+  <view class="header">
+    <text class="page-title">我的</text>
+
+    <view class="user-row">
+      <view class="user-main" bindtap="onEditProfile">
+        <image class="avatar" src="{{avatar}}" mode="aspectFill"></image>
+        <view class="user-mid">
+          <view class="nick-row">
+            <text class="nickname">{{nickname}}</text>
+            <text class="edit-tip" wx:if="{{loggedIn}}">编辑</text>
+          </view>
+          <view class="role-tag">
+            <text class="role-text">{{roleText}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="user-right" catchtap="onStudent">
+        <text class="auth-title">学号认证</text>
+        <text class="auth-id">{{studentId || '未认证'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 会员卡 -->
+  <view class="vip-card {{isVip ? 'opened' : ''}}">
+    <view class="vip-top">
+      <text class="vip-name">CAMPUS 衣橱 校园会员</text>
+      <view class="vip-badge">
+        <text class="vip-badge-text">VIP</text>
+      </view>
+    </view>
+    <text class="vip-desc" wx:if="{{isVip}}">已开通 · 免押优先取衣等权益生效中</text>
+    <text class="vip-desc" wx:else>开通享免押优惠、优先取衣等权益</text>
+    <view class="vip-btn" catchtap="onVip">
+      <text class="vip-btn-text">{{isVip ? '查看权益' : '立即开通'}}</text>
+    </view>
+  </view>
+
+  <!-- 我的订单 -->
+  <view class="order-card">
+    <view class="order-head">
+      <text class="card-title">我的订单</text>
+      <text class="order-all" bindtap="onAllOrders">全部订单 ›</text>
+    </view>
+    <view class="order-tabs">
+      <view class="otab {{orderTab === 'rent' ? 'on' : ''}}" data-tab="rent" bindtap="onOrderTab">
+        <text class="otab-text">我租到的</text>
+        <!-- 当前在看「我出租的」时，才在「我租到的」上显示总数提醒 -->
+        <view class="otab-badge" wx:if="{{orderTab !== 'rent' && rentTotal > 0}}">
+          <text class="otab-badge-text">{{rentTotal > 99 ? '99+' : rentTotal}}</text>
+        </view>
+        <view class="otab-line" wx:if="{{orderTab === 'rent'}}"></view>
+      </view>
+      <view class="otab {{orderTab === 'lend' ? 'on' : ''}}" data-tab="lend" bindtap="onOrderTab">
+        <text class="otab-text">我出租的</text>
+        <!-- 当前在看「我租到的」时，才在「我出租的」上显示总数提醒 -->
+        <view class="otab-badge" wx:if="{{orderTab !== 'lend' && lendTotal > 0}}">
+          <text class="otab-badge-text">{{lendTotal > 99 ? '99+' : lendTotal}}</text>
+        </view>
+        <view class="otab-line" wx:if="{{orderTab === 'lend'}}"></view>
+      </view>
+    </view>
+    <view class="order-icons">
+      <view class="oitem" wx:for="{{orderStatuses}}" wx:key="key" data-key="{{item.key}}" bindtap="onOrderStatus">
+        <view class="oicon-wrap">
+          <image class="oicon" src="{{item.icon}}" mode="aspectFit"></image>
+          <view class="oicon-badge" wx:if="{{item.badge > 0}}">
+            <text class="oicon-badge-text">{{item.badge > 99 ? '99+' : item.badge}}</text>
+          </view>
+        </view>
+        <text class="olabel">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-card">
+    <view class="menu-row" bindtap="onMyPublish">
+      <text class="menu-text">我的发布</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-line"></view>
+    <view class="menu-row" bindtap="onMyFav">
+      <text class="menu-text">我的收藏</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-line"></view>
+    <view class="menu-row" bindtap="onMyReviews">
+      <text class="menu-text">收到的评价</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-line"></view>
+    <view class="menu-row" bindtap="onAddress">
+      <text class="menu-text">交接地址</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-line"></view>
+    <view class="menu-row" bindtap="onDeposit">
+      <text class="menu-text">押金与规则说明</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-line"></view>
+    <view class="menu-row" bindtap="onSettings">
+      <text class="menu-text">设置</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+</view>

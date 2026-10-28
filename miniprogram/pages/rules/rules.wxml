@@ -1,0 +1,49 @@
+﻿<!-- 审核规则提示 -->
+<view class="page">
+  <view class="nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <text class="nav-title">审核规则提示</text>
+  </view>
+
+  <scroll-view class="body" scroll-y show-scrollbar="{{false}}">
+    <view class="banner">
+      <text class="banner-tag">必看规则</text>
+      <text class="banner-title">发布前请先了解</text>
+      <text class="banner-desc">内容审核通过后才会对外展示</text>
+    </view>
+
+    <view class="card">
+      <view class="item">
+        <view class="num">1</view>
+        <view class="item-main">
+          <text class="item-title">真实照片</text>
+          <text class="item-desc">请上传衣物实拍图，避免盗图或严重滤镜误导</text>
+        </view>
+      </view>
+      <view class="item">
+        <view class="num">2</view>
+        <view class="item-main">
+          <text class="item-title">清晰标价</text>
+          <text class="item-desc">租金、尺码、可租档期请填写完整，方便买家确认</text>
+        </view>
+      </view>
+      <view class="item">
+        <view class="num">3</view>
+        <view class="item-main">
+          <text class="item-title">文明晒图</text>
+          <text class="item-desc">买家秀请文明分享，禁止违规、低俗或人身攻击内容</text>
+        </view>
+      </view>
+      <view class="item">
+        <view class="num">4</view>
+        <view class="item-main">
+          <text class="item-title">审核后展示</text>
+          <text class="item-desc">提交后进入审核，通过后会出现在首页 / 分类 / 买家秀</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="tip">如有疑问可联系校园管理员处理</view>
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

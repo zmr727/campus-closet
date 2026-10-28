@@ -1,0 +1,63 @@
+﻿<!-- 发布入口页 -->
+<view class="page">
+  <view class="hero">
+    <text class="hero-from">来CAMPUS</text>
+    <text class="hero-title">发点穿搭！</text>
+    <view class="hero-tag">
+      <text class="hero-tag-text">校园租赁更轻松</text>
+    </view>
+  </view>
+
+  <!-- 上架租赁 -->
+  <view class="card rent" hover-class="card-hover" bindtap="onRent">
+    <view class="card-main">
+      <view class="card-title-row">
+        <text class="card-title">上架租赁信息</text>
+        <text class="card-arrow">›</text>
+      </view>
+      <text class="card-desc">30秒发布衣物，闲置也能周转</text>
+      <text class="card-sub">填写尺码 · 租金 · 可租档期</text>
+    </view>
+    <view class="badge-rent">
+      <text class="badge-rent-text">租</text>
+    </view>
+  </view>
+
+  <!-- 买家秀 -->
+  <view class="card show" hover-class="card-hover" bindtap="onBuyerShow">
+    <view class="card-main">
+      <view class="card-title-row">
+        <text class="card-title sm">晒买家秀</text>
+        <text class="card-arrow">›</text>
+      </view>
+      <text class="card-desc dark">上传实拍穿搭，分享租赁体验</text>
+    </view>
+    <view class="badge-show">
+      <text class="badge-show-text">秀</text>
+    </view>
+  </view>
+
+  <!-- 规则 + 草稿 -->
+  <view class="row-cards">
+    <view class="mini rules" hover-class="card-hover" bindtap="onRules">
+      <view class="mini-tag orange">
+        <text class="mini-tag-text">必看规则</text>
+      </view>
+      <text class="mini-title">审核规则提示</text>
+      <text class="mini-line">真实照片</text>
+      <text class="mini-line">清晰标价 · 文明晒图</text>
+    </view>
+    <view class="mini draft" hover-class="card-hover" bindtap="onDrafts">
+      <view class="mini-tag pink">
+        <text class="mini-tag-text pink-t">草稿箱</text>
+      </view>
+      <text class="mini-title">我的发布草稿</text>
+      <text class="mini-line">未提交内容在这里</text>
+      <view class="draft-count">
+        <text class="draft-count-text">{{draftCount}}篇</text>
+      </view>
+    </view>
+  </view>
+
+  <text class="foot-tip">发布内容将在审核通过后展示</text>
+</view>

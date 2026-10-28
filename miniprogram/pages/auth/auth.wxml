@@ -1,0 +1,35 @@
+﻿<!-- 登录：微信一键 + 手机号（无单独注册） -->
+<!-- 整页容器
+ bindtap="onBack"点击时执行onBack的函数-->
+<view class="page">
+  <view class="nav">
+    <view class="nav-back" bindtap="onBack">‹</view>
+    <text class="nav-title">登录校园衣橱</text>
+  </view>
+<!-- aspectFit图片缩放方式不变形 -->
+  <view class="logo-row">
+    <image class="logo" src="{{logo}}" mode="aspectFit"></image>
+  </view>
+  <view class="tip">登录后可完善学号认证</view>
+<!-- hover-class按下去时的样式
+按下后执行的内容 -->
+  <view class="btn-main" hover-class="btn-hover" bindtap="onWxLogin">微信一键登录</view>
+<!-- 为真时就加勾选样式 
+catchtap也是点击事件，但不会继续传给外层-->
+  <view class="agree-row">
+    <view class="check {{agreed ? 'on' : ''}}" bindtap="toggleAgree"></view>
+    <view class="agree-text">
+      <text>登录即表示同意</text>
+      <text class="link" catchtap="onAgreement">《用户协议》</text>
+      <text>和</text>
+      <text class="link" catchtap="onPrivacy">《隐私政策》</text>
+    </view>
+  </view>
+
+  <view class="other">
+    <view class="other-title">其它登录方式</view>
+    <view class="other-links">
+      <text class="other-link" bindtap="onPhone">手机号登录</text>
+    </view>
+  </view>
+</view>

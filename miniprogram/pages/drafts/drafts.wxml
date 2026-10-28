@@ -1,0 +1,22 @@
+﻿<!-- 草稿箱 -->
+<view class="page">
+  <view class="nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <text class="nav-title">我的发布草稿</text>
+  </view>
+
+  <view class="empty" wx:if="{{!list.length}}">
+    <text>暂无草稿</text>
+  </view>
+
+  <scroll-view class="body" scroll-y wx:else>
+    <view class="row" wx:for="{{list}}" wx:key="id">
+      <image class="thumb" src="{{item.cover}}" mode="aspectFill"></image>
+      <view class="info" data-id="{{item.id}}" data-type="{{item.type}}" bindtap="onEdit">
+        <text class="title">{{item.title || '未命名草稿'}}</text>
+        <text class="sub">{{item.type === 'show' ? '买家秀' : '租赁发布'}} · {{item.timeText}}</text>
+      </view>
+      <text class="del" data-id="{{item.id}}" catchtap="onDelete">删除</text>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,110 @@
+.page {
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  padding: 88rpx 24rpx 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.06);
+}
+
+.back {
+  width: 56rpx;
+  height: 56rpx;
+  font-size: 48rpx;
+  line-height: 48rpx;
+  color: #333;
+  text-align: center;
+}
+
+.nav-title {
+  flex: 1;
+  text-align: center;
+  margin-right: 56rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111;
+}
+
+.body {
+  flex: 1;
+  height: 0;
+}
+
+.hero {
+  margin: 24rpx 24rpx 8rpx;
+  padding: 36rpx 28rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #ff8fa3 0%, #ff4768 100%);
+}
+
+.hero-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero-sub {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.grid {
+  padding: 16rpx 18rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  width: 346rpx;
+  margin-bottom: 20rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #f7f8fc;
+}
+
+.cover {
+  width: 346rpx;
+  height: 346rpx;
+  display: block;
+  background: #eee;
+}
+
+.name {
+  display: block;
+  padding: 14rpx 16rpx 0;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #222;
+}
+
+.intro {
+  display: block;
+  padding: 8rpx 16rpx 0;
+  font-size: 22rpx;
+  color: #888;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  display: block;
+  padding: 8rpx 16rpx 18rpx;
+  font-size: 20rpx;
+  color: #ff4768;
+}
+
+.bottom-space {
+  height: 60rpx;
+}

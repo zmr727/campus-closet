@@ -1,0 +1,7 @@
+<image
+  src="{{displaySrc}}"
+  mode="{{mode}}"
+  lazy-load="{{lazyLoad}}"
+  bindtap="onTap"
+  binderror="onError"
+/>

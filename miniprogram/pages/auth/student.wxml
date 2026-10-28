@@ -1,0 +1,13 @@
+﻿<view class="page">
+  <view class="nav">
+    <view class="nav-back" bindtap="onBack">‹</view>
+    <text class="nav-title">学号认证</text>
+  </view>
+  <view class="desc">学号与真实姓名均为必填；昵称请在「我的」里单独修改</view>
+  <view class="form">
+    <input class="input" placeholder="请输入学号（必填）" value="{{studentId}}" bindinput="onId" />
+    <input class="input" placeholder="请输入真实姓名（必填）" value="{{name}}" bindinput="onName" />
+    <view class="btn" bindtap="onSubmit">提交认证</view>
+    <view class="skip" bindtap="onBack">暂时跳过</view>
+  </view>
+</view>

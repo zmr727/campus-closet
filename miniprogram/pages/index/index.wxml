@@ -1,0 +1,118 @@
+﻿<!-- 首页 -->
+<view class="page">
+  <!-- 顶栏：Logo + 搜索 -->
+  <view class="header">
+    <image class="logo" src="{{logo}}" mode="aspectFit"></image>
+    <view class="search-bar" bindtap="onSearch">
+      <image class="search-icon" src="{{searchIcon}}" mode="aspectFit"></image>
+      <text class="search-ph">搜索汉服/JK/礼服</text>
+    </view>
+  </view>
+
+  <!-- 校区行：点击切换（演示手动选，真定位落地再做） -->
+  <view class="campus-row" bindtap="onCampus">
+    <text class="campus-tri">▼</text>
+    <text class="campus-text">{{campus}}</text>
+    <text class="campus-more">›</text>
+  </view>
+
+  <view class="divider"></view>
+
+  <!-- 横幅轮播：去看看 → 买家秀 -->
+  <swiper
+    class="banner-swiper"
+    indicator-dots
+    indicator-color="rgba(0,0,0,0.15)"
+    indicator-active-color="#FF4768"
+    autoplay
+    circular
+    interval="3000"
+    duration="500"
+  >
+    <swiper-item wx:for="{{banners}}" wx:key="*this">
+      <image class="banner" src="{{item}}" mode="aspectFill" bindtap="onBuyerShow"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 上新日历 -->
+  <view class="sec-head">
+    <text class="sec-title">上新日历</text>
+    <view class="sec-right">
+      <text class="sec-more">{{calendarCount}}个新品上新</text>
+      <image class="more-icon" src="{{moreIcon}}" mode="aspectFit"></image>
+    </view>
+  </view>
+  <scroll-view class="cal-scroll" scroll-x show-scrollbar="{{false}}">
+    <view class="cal-list">
+      <view
+        class="cal-card"
+        wx:for="{{calendar}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onTapGoods"
+      >
+        <text class="cal-date">{{item.date}}</text>
+        <text class="cal-name">{{item.name}}</text>
+        <view class="cal-img-wrap">
+          <image class="cal-img" src="{{item.cover}}" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 推荐服装：双列瀑布流 -->
+  <view class="sec-head">
+    <text class="sec-title">推荐服装</text>
+  </view>
+
+  <view class="water-wrap">
+    <view class="water-col">
+      <view class="hot-card">
+        <view class="hot-title">热租榜</view>
+        <view class="hot-sub">让您的选择更简单</view>
+        <view
+          class="hot-row"
+          wx:for="{{hotList}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="onTapGoods"
+        >
+          <image class="hot-thumb" src="{{item.cover}}" mode="aspectFill"></image>
+          <text class="hot-name">{{item.title}}</text>
+        </view>
+      </view>
+
+      <view
+        class="goods-card"
+        wx:for="{{leftList}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onTapGoods"
+      >
+        <image class="goods-img" src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="goods-info">
+          <text class="goods-name">{{item.title}}</text>
+          <text class="goods-price">￥{{item.price}}起/天</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="water-col">
+      <view
+        class="goods-card"
+        wx:for="{{rightList}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onTapGoods"
+      >
+        <image class="goods-img" src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="goods-info">
+          <text class="goods-name">{{item.title}}</text>
+          <text class="goods-price">￥{{item.price}}起/天</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

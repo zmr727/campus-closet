@@ -1,0 +1,93 @@
+﻿<!-- 分类页 -->
+<view class="page">
+  <view class="header">
+    <text class="title">分类</text>
+    <text class="sub">按租期查看可租库存</text>
+  </view>
+
+  <view class="search-bar">
+    <image class="search-icon" src="{{searchIcon}}" mode="aspectFit"></image>
+    <input
+      class="search-input"
+      placeholder="搜索衣物名称"
+      placeholder-class="search-ph"
+      value="{{keyword}}"
+      confirm-type="search"
+      bindinput="onKeyword"
+      bindconfirm="onSearch"
+    />
+  </view>
+
+  <view class="filters">
+    <view class="filter-chip" bindtap="onPickCategory">
+      <text class="filter-text">{{categoryLabel}}</text>
+      <text class="filter-arrow">›</text>
+    </view>
+    <view class="filter-chip wide rent-chip" bindtap="onOpenRent">
+      <text class="filter-text">租期:{{startDate}}~{{endDate}}({{days}}天)</text>
+    </view>
+  </view>
+
+  <scroll-view class="grid-scroll" scroll-y show-scrollbar="{{false}}">
+    <view class="grid" wx:if="{{list.length}}">
+      <view
+        class="card"
+        wx:for="{{list}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onTapItem"
+      >
+        <image class="cover" src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="info">
+          <text class="name">{{item.title}}</text>
+          <text class="size">尺码：{{item.size_show}}</text>
+          <text class="price">￥{{item.price}}元起/天</text>
+        </view>
+      </view>
+    </view>
+    <view class="empty" wx:else>
+      <text>暂无符合条件的衣物</text>
+    </view>
+    <view class="bottom-space"></view>
+  </scroll-view>
+
+  <!-- 左侧分类筛选抽屉 -->
+  <view class="mask {{showCate ? 'show' : ''}}" bindtap="onCloseCate" catchtouchmove="noop"></view>
+  <view class="cate-drawer {{showCate ? 'open' : ''}}">
+    <view class="cate-drawer-hd">
+      <text class="cate-title">全部分类</text>
+    </view>
+    <scroll-view class="cate-list" scroll-y show-scrollbar="{{false}}">
+      <view
+        class="cate-item {{categoryLabel === item ? 'on' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="*this"
+        data-name="{{item}}"
+        bindtap="onSelectCate"
+      >{{item}}</view>
+    </scroll-view>
+  </view>
+
+  <!-- 租期时间段弹层：选开始日 ~ 结束日 -->
+  <view class="mask {{showRent ? 'show' : ''}}" bindtap="onCloseRent" catchtouchmove="noop"></view>
+  <view class="rent-sheet {{showRent ? 'open' : ''}}">
+    <text class="rent-sheet-title">选择租期</text>
+    <view class="rent-row">
+      <text class="rent-label">开始日期</text>
+      <picker mode="date" value="{{tempStart}}" bindchange="onTempStart">
+        <view class="rent-value">{{tempStart}} ›</view>
+      </picker>
+    </view>
+    <view class="rent-row">
+      <text class="rent-label">结束日期</text>
+      <picker mode="date" value="{{tempEnd}}" start="{{tempStart}}" bindchange="onTempEnd">
+        <view class="rent-value">{{tempEnd}} ›</view>
+      </picker>
+    </view>
+    <view class="rent-summary">共 {{tempDays}} 天：{{tempStart}} ~ {{tempEnd}}</view>
+    <view class="rent-actions">
+      <view class="rent-btn ghost" bindtap="onCloseRent">取消</view>
+      <view class="rent-btn primary" bindtap="onConfirmRent">确定</view>
+    </view>
+  </view>
+</view>

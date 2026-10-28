@@ -1,0 +1,130 @@
+.page {
+  height: 100vh;
+  background: linear-gradient(180deg, #ffe6ea 0%, #ffffff 28%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  padding: 88rpx 24rpx 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.back {
+  width: 56rpx;
+  font-size: 48rpx;
+  color: #333;
+  text-align: center;
+}
+
+.nav-title {
+  flex: 1;
+  text-align: center;
+  margin-right: 56rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.body {
+  flex: 1;
+  height: 0;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.banner {
+  margin-top: 12rpx;
+  padding: 36rpx 32rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(180deg, #ffd0dc 0%, #ffe8ee 55%, #fff5f7 100%);
+}
+
+.banner-tag {
+  display: inline-block;
+  padding: 6rpx 16rpx;
+  border-radius: 10rpx;
+  background: #ffba64;
+  color: #fff;
+  font-size: 22rpx;
+}
+
+.banner-title {
+  display: block;
+  margin-top: 20rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #111;
+}
+
+.banner-desc {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #8a8a8a;
+}
+
+.card {
+  margin-top: 28rpx;
+  padding: 12rpx 28rpx;
+  border-radius: 28rpx;
+  background: #fff;
+  box-shadow: 0 8rpx 28rpx rgba(255, 71, 104, 0.06);
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.num {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: #ffe6ea;
+  color: #ff4768;
+  font-size: 26rpx;
+  font-weight: 700;
+  text-align: center;
+  line-height: 48rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.item-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #111;
+}
+
+.item-desc {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #8a8a8a;
+  line-height: 1.5;
+}
+
+.tip {
+  margin-top: 36rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #b0b0b0;
+}
+
+.bottom-space {
+  height: 60rpx;
+}

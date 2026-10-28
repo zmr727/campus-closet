@@ -1,0 +1,88 @@
+{
+  "description": "CAMPUS衣橱小程序",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "node_modules"
+      },
+      {
+        "type": "file",
+        "value": "package.json"
+      },
+      {
+        "type": "file",
+        "value": "package-lock.json"
+      },
+      {
+        "type": "glob",
+        "value": "images/home/banner*.png"
+      },
+      {
+        "type": "glob",
+        "value": "images/home/cate_*.png"
+      },
+      {
+        "type": "glob",
+        "value": "images/home/hot*.png"
+      },
+      {
+        "type": "glob",
+        "value": "images/home/new_*.png"
+      },
+      {
+        "type": "glob",
+        "value": "images/home/rec*.png"
+      },
+      {
+        "type": "glob",
+        "value": "images/home/cal*.png"
+      },
+      {
+        "type": "file",
+        "value": "images/home/logo.png"
+      },
+      {
+        "type": "folder",
+        "value": "images/login"
+      },
+      {
+        "type": "folder",
+        "value": "images/avatar"
+      },
+      {
+        "type": "file",
+        "value": "images/mine/avatar.png"
+      }
+    ],
+    "include": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "uglifyFileName": false,
+    "minifyWXML": true,
+    "useCompilerPlugins": false,
+    "ignoreDevUnusedFiles": false,
+    "ignoreUploadUnusedFiles": false,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.17.0",
+  "appid": "wx26ac86ce19612b40",
+  "projectname": "CAMPUS衣橱小程序",
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "simulatorPluginLibVersion": {}
+}

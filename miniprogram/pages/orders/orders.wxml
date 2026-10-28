@@ -1,0 +1,147 @@
+﻿<view class="page">
+  <view class="nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <text class="nav-title">{{pageTitle}}</text>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{side === 'rent' ? 'on' : ''}}" data-side="rent" bindtap="onSide">我租到的</view>
+    <view class="tab {{side === 'lend' ? 'on' : ''}}" data-side="lend" bindtap="onSide">我出租的</view>
+  </view>
+
+  <scroll-view class="status-scroll" scroll-x show-scrollbar="{{false}}">
+    <view class="status-row">
+      <view
+        class="chip {{status === '' ? 'on' : ''}}"
+        data-status=""
+        bindtap="onStatus"
+      >全部</view>
+      <view
+        class="chip {{status === item.key ? 'on' : ''}}"
+        wx:for="{{statusList}}"
+        wx:key="key"
+        data-status="{{item.key}}"
+        bindtap="onStatus"
+      >{{item.label}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="empty" wx:if="{{!list.length}}">
+    <text>暂无相关订单</text>
+  </view>
+
+  <scroll-view class="body" scroll-y wx:else>
+    <view class="card" wx:for="{{list}}" wx:key="id">
+      <view class="card-top">
+        <text class="status">{{item.statusLabel}}</text>
+        <text class="time">{{item.timeText}}</text>
+      </view>
+      <view class="card-main" data-id="{{item.clothesId}}" bindtap="onOpen">
+        <image class="cover" src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="info">
+          <text class="title">{{item.title}}</text>
+          <text class="meta">尺码 {{item.size || '均码'}} · {{item.days}}天</text>
+          <text class="meta" wx:if="{{item.buyerName}}">租客 {{item.buyerName}}</text>
+          <text class="price">￥{{item.totalPrice}}</text>
+        </view>
+      </view>
+
+      <!-- 租客：出示取件码 -->
+      <view class="code-box" wx:if="{{item.showPickupCodeBox}}" catchtap="noop">
+        <view class="code-row">
+          <text class="code-label">取件码</text>
+          <text class="code-num">{{item.pickupCode}}</text>
+          <text class="code-copy" data-code="{{item.pickupCode}}" catchtap="onCopyCode">复制</text>
+        </view>
+        <text class="code-tip">请给出借方核销此码后完成交衣（驿站：{{item.station}}）</text>
+      </view>
+
+      <!-- 出借方：核销取件码 -->
+      <view class="verify-box" wx:if="{{item.showVerifyPickup}}" catchtap="noop">
+        <text class="verify-title">向租客索取取件码并核销</text>
+        <input
+          class="verify-input"
+          type="number"
+          maxlength="6"
+          placeholder="请输入6位取件码"
+          data-id="{{item.id}}"
+          value="{{verifyCodes[item.codeKey] || ''}}"
+          bindinput="onCodeInput"
+        />
+      </view>
+
+      <!-- 租客：出示归还码 -->
+      <view class="code-box" wx:if="{{item.showReturnCodeBox}}" catchtap="noop">
+        <view class="code-row">
+          <text class="code-label">归还码</text>
+          <text class="code-num">{{item.returnCode}}</text>
+          <text class="code-copy" data-code="{{item.returnCode}}" catchtap="onCopyCode">复制</text>
+        </view>
+        <text class="code-tip">当面归还时请给出借方核销此码</text>
+      </view>
+
+      <!-- 出借方：核销归还码 -->
+      <view class="verify-box" wx:if="{{item.showVerifyReturn}}" catchtap="noop">
+        <text class="verify-title">向租客索取归还码并核销</text>
+        <input
+          class="verify-input"
+          type="number"
+          maxlength="6"
+          placeholder="请输入6位归还码"
+          data-id="{{item.id}}"
+          value="{{verifyCodes[item.codeKey] || ''}}"
+          bindinput="onCodeInput"
+        />
+      </view>
+
+      <view class="card-actions" catchtap="noop">
+        <view class="btn ghost" data-id="{{item.id}}" catchtap="onCancel" wx:if="{{item.showPay}}">取消订单</view>
+        <view class="btn primary" data-id="{{item.id}}" data-price="{{item.totalPrice}}" catchtap="onPay" wx:if="{{item.showPay}}">去付款</view>
+
+        <view class="btn ghost" data-id="{{item.clothesId}}" catchtap="onOpen" wx:if="{{!item.showPay}}">查看商品</view>
+
+        <view
+          class="btn primary"
+          data-id="{{item.id}}"
+          data-action="confirm_pickup"
+          catchtap="onVerify"
+          wx:if="{{item.showVerifyPickup}}"
+        >核销取件码</view>
+
+        <view
+          class="btn primary"
+          data-id="{{item.id}}"
+          data-action="start_return"
+          catchtap="onAdvance"
+          wx:if="{{item.showStartReturn}}"
+        >{{side === 'lend' ? '提醒归还' : '申请归还'}}</view>
+
+        <view
+          class="btn primary"
+          data-id="{{item.id}}"
+          data-action="confirm_return"
+          catchtap="onVerify"
+          wx:if="{{item.showVerifyReturn}}"
+        >核销归还码</view>
+
+        <view
+          class="btn primary"
+          data-id="{{item.id}}"
+          catchtap="onGoReview"
+          wx:if="{{item.showReview}}"
+        >去评价</view>
+        <view class="btn ghost" wx:if="{{item.hasReviewed}}">已评 {{item.reviewScore}}星</view>
+      </view>
+
+      <view class="peer-review" wx:if="{{item.hasPeerReview}}" catchtap="noop">
+        <text class="peer-title">对方给你的评价 · {{item.peerReviewScore}}星</text>
+        <view class="peer-tags" wx:if="{{item.peerReviewTags.length}}">
+          <text class="peer-tag" wx:for="{{item.peerReviewTags}}" wx:for-item="tg" wx:key="*this">{{tg}}</text>
+        </view>
+        <text class="peer-content" wx:if="{{item.peerReviewContent}}">{{item.peerReviewContent}}</text>
+        <text class="peer-content muted" wx:else>对方未填写文字</text>
+      </view>
+    </view>
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

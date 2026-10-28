@@ -1,0 +1,158 @@
+/* 参考图布局 —— 405×896 */
+/*算宽高时把 padding、边框算进总宽高里，避免撑破布局
+display: flex设置成弹性布局
+align-items水平方向居中，竖着的那条主轴水平居中
+底部留25px空隙
+*/
+.page {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px;
+}
+
+/* Logo */
+/*margin-top距离顶部的距离
+justify-content水平方向居中，主轴横着的那条水平居中
+flex-shrink空间不够时保持原来大小，不要被挤扁
+background是transparent背景是透明背景*/
+.logo-wrap {
+  margin-top: 140rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.logo {
+  width: 360rpx;
+  height: 200rpx;
+  background: transparent;
+}
+
+/* 标语起略下移 */
+/* white-space文字不换行，强制放在一行
+ line-height行高，一行文字占多高
+ flex-shrink保持原来大小，不被压扁
+ letter-spacing字间距，让字体间更舒展*/
+.title {
+  margin-top: 48rpx;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.25;
+  flex-shrink: 0;
+  letter-spacing: 2rpx;
+}
+
+/* font-weight控制字体有多粗 */
+.title-dark {
+  font-size: 42rpx;
+  font-weight: 600;
+  color: rgb(60, 60, 60);
+  letter-spacing: 2rpx;
+}
+
+.title-pink {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: rgb(255, 71, 104);
+  letter-spacing: 2rpx;
+}
+
+/* margin-top是垂直距离顶部的，水平是左右
+text-align文字水平居中
+flex-shrink不挤压变形
+letter-spacing字间距让整体排布更舒展 */
+.subtitle {
+  margin-top: 20rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: rgb(124, 124, 124);
+  line-height: 1.2;
+  flex-shrink: 0;
+  letter-spacing: 2rpx;
+}
+
+/* ========== 登录页中图高度：只改这一行数字 ========== */
+/* 建议范围 360 ~ 650，数值越大图越高 */
+.hero {
+  margin-top: 15rpx;
+  margin-bottom: 56rpx;
+  width: 800rpx;
+  height: 690rpx;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+/* 按钮区 */
+/* 管flex里面的子盒子对齐居中 */
+.actions {
+  width: 100%;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+/* border-radius圆角矩形
+font-size font-weight字号大小，字号宽度
+align-items justify-content让在内容在盒子内水平竖直都居中  */
+.btn-primary {
+  width: 604rpx;
+  height: 84rpx;
+  border-radius: 42rpx;
+  background-color: rgb(255, 71, 104);
+  color: #ffffff;
+  font-size: 36rpx;
+  font-weight: 500;
+  letter-spacing: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* box-sizing:border-box写的宽高包括边框和内边距 
+border-radius圆角半径*/
+.btn-secondary {
+  margin-top: 28rpx;
+  width: 604rpx;
+  height: 84rpx;
+  box-sizing: border-box;
+  border-radius: 42rpx;
+  border: 2rpx solid rgb(255, 71, 104);
+  background-color: rgb(255, 230, 234);
+  color: rgb(124, 124, 124);
+  font-size: 34rpx;
+  letter-spacing: 6rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 手指按下去之后的样式，透明度85% */
+.btn-hover {
+  opacity: 0.85;
+}
+/* 在竖向 flex 里，上边距自动占满剩余空间
+ → 把页脚顶到屏幕最下方
+ text-align文字水平居中 
+ 想要多空一截 → 用 margin
+想要居中摆好 → 用 align-items / justify-content / text-align*/
+.footer {
+  margin-top: auto;
+  margin-bottom: 30rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: rgb(124, 124, 124);
+  line-height: 1.2;
+  letter-spacing: 2rpx;
+  flex-shrink: 0;
+}

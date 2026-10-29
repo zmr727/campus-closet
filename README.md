@@ -66,8 +66,9 @@ http://127.0.0.1/miniprogram/admin/
 ### 4. 打开小程序
 
 1. 微信开发者工具 → 导入项目 → 选择本仓库的 `miniprogram/` 目录
-2. 详情 → 本地设置 → 勾选 **不校验合法域名、web-view（业务域名）、TLS 版本以及 HTTPS 证书**
-3. 编译运行
+2. 若使用自己的小程序账号，将 `miniprogram/project.config.json` 里的 `appid` 从 `touristappid` 改成你的 AppID（仓库内不放置真实 AppID）
+3. 详情 → 本地设置 → 勾选 **不校验合法域名、web-view（业务域名）、TLS 版本以及 HTTPS 证书**
+4. 编译运行
 
 接口地址由 `miniprogram/utils/request.js` 自动拼接为：
 
@@ -97,5 +98,6 @@ http://127.0.0.1/miniprogram/admin/
 ## 说明
 
 - 本项目为课程实践作品，数据库连接使用本地开发默认配置，请勿用于生产环境。
+- 公开仓库中的小程序 `appid` 使用占位值 `touristappid`，请勿把真实 AppID / AppSecret 提交到 Git。
 - 大图等静态资源在 `campus_api/static/`；小程序包内主要保留图标。
 - 更细的页面 ↔ 接口对应关系见 `docs/代码结构说明.md`。
